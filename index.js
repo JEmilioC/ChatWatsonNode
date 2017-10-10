@@ -33,16 +33,12 @@ function processResponse(err, response) {
   if (response.intents.length > 0) {
     console.log('Detected intent: #' + response.intents[0].intent);
   }
-  if (response.intents[0].intent!="Meme") {
+
   if (response.output.text.length != 0) {
       console.log(response.output.text[0]);
 	  io.emit('chat message', "Watson: " +response.output.text[0]);
   }
-}else {
-	var texto="<img src='/images/memes.jpg' alt='Imagen' />";
-	console.log(response.output.text[0]);
-	io.emit('chat message', "Watson: Este es un momaso");
-}
+
 }
 
 	});
