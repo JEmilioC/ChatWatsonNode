@@ -1,18 +1,12 @@
 <!doctype html>
 <html>
   <head>
-    <link rel="shortcut icon" type="image/x-icon" href="/images/icono.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="https://www.ibm.com/thought-leadership/you/img/icon-01.png"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-
   <!-- Compiled and minified JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-    <!-- <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/> -->
-    <!-- <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/> -->
-    <!-- <link href="css/animate.css" type="text/css" rel="stylesheet" media="screen,projection"/> -->
     <title>CROSS</title>
     <!-- <script src="/socket.io/socket.io.js"></script> -->
     <script src="/socket.io/socket.io.js"></script>
@@ -27,37 +21,41 @@
     });
     socket.on('chat message', function(msg){
       $('#messages').append($('<li>').text(msg));
+      $('body').scrollTop(9000);
     });
   });
 </script>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      body { font: 17px Helvetica, Verdana, white; }
+      body { font: 17px Helvetica, Verdana, bottom; }
       form { background: #FFF; padding: 3px; position: fixed; bottom: 0; width: 100%; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
-      #messages li { padding: 5px 10px; }
-      #messages li:nth-child(odd) { background: #eee; }
+      #messages li { padding: 5px 10px; text-align: right; height: auto; font-size: 15px;}
+      #messages li:nth-child(odd) { background: #2196f3;text-align: left; height: auto; color: white; border-radius: 10px 10px 10px 10px;}
     </style>
   </head>
   <body>
       <!-- <div class="container"> -->
       <nav style="background-color:#ebf5fb";>
-        <div class="nav-wrapper">
-          <a href="https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/CROSS%20User%20Guide/page/Welcome" class="brand-logo" style="font-family: GillSans, Calibri, Trebuchet, sans-serif; color:black; text-align:center; font-size:45px;">  <i class="material-icons" style="font-size: 40px;">more</i>CROSS Bot</a>
-          <!-- <a href="https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/CROSS%20User%20Guide/page/Welcome" class="brand-logo"> <img src="http://uvt-o.herokuapp.com/img/UVTO.png" width="60px"/>  </a> -->
+        <div class="nav-wrapper" style="margin-right:3%; margin-left:3%">
+        <img style="margin-top:1px;"src="https://www.ibm.com/thought-leadership/you/img/icon-01.png" width="60px"/>
+          <a href="https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/CROSS%20User%20Guide/page/Welcome" class="brand-logo" style="font-family:'Trebuchet MS', Helvetica, sans-serif; color:#1f70c1; text-align:center; font-size:40px;"> CROSS Bot Service</a>
           <ul class="right hide-on-med-and-down">
-              <!-- <li><a href="" style="font-size:45px;font-family: GillSans, Calibri, Trebuchet, sans-serif; color:black">CROSS</a></li> -->
              <li><a href=""><img style="margin-top:5px;"src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" width="130px"/></a></li>
           </ul>
         </div>
       </nav>
-    <ul id="messages"></ul>
-    <form action="" style="background:#ebf5fb; border-color:black; margin: 5px 2px 0px 0px">
-            <div class="input-field col s12">
-                  <i class="material-icons prefix">chevron_right</i> <input placeholder="Type Something" id="m" class="validate" />
+ <div>
+    <ul id="messages" style=" margin-right:10%; margin-left:10%; margin-top:2%;margin-bottom:6%;"></ul>
+</div>
+    <div>
+    <form action="" style="background:#ebf5fb; height:60px; bottom:2%;margin-right:15%;" >
+            <div class="input-field col s5">
+                  <i class="material-icons prefix">chevron_right</i> <input placeholder="Type Something" id="m" />
             </div>
     </form>
+</div>
   </body>
 </html>

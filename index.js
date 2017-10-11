@@ -5,9 +5,9 @@ var io= require('socket.io')(http);
 var ConversationV1 = require('watson-developer-cloud/conversation/v1');
 
 var conversation = new ConversationV1({
-  username: 'b56f3160-774b-4c90-9341-dde436c46dc3',
-  password: 'wmTZU13BtHoh',
-  path: { workspace_id: 'be6008e1-1343-4962-b174-79ff8726c1ca' },
+  username: 'db542e8e-ba60-4115-b898-6c5343b826ed',
+  password: 'z05uHNSa03AA',
+  path: { workspace_id: 'a6a968f3-5ddf-47e2-abc4-84dd9c24d298' },
   version_date: '2017-10-10'
 });
 
@@ -20,7 +20,11 @@ io.emit('some event', { for: 'everyone' });
 
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
-    io.emit('chat message', "You: "+msg);
+     var hoy= new Date();
+     var hr= hoy.getHours();
+     var min= hoy.getMinutes();
+     var hora= hr+":"+min;
+    io.emit('chat message', "You("+hora +" hrs): " + msg);
 
 
 conversation.message({input: {text: msg}}, processResponse);
@@ -36,7 +40,7 @@ function processResponse(err, response) {
 
   if (response.output.text.length != 0) {
       console.log(response.output.text[0]);
-	  io.emit('chat message', "Watson: " +response.output.text[0]);
+	  io.emit('chat message', "Watson("+hora +" hrs): "  +response.output.text[0]);
   }
 
 }
