@@ -17,11 +17,39 @@
     $('form').submit(function(){
       socket.emit('chat message', $('#m').val());
       $('#m').val('');
+      $('body').scrollTop(9000);
       return false;
     });
     socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
+    // $('#messages').append($('<li>').text(msg));
+    // $('body').scrollTop(9000);
+    // alert(msg)
+    if (msg=="imagen") {
+     $('#messages').append($('<li><img style="margin-top:1px;"src="https://image.ibb.co/nctEYw/Snap7.jpg" width="3  50px""/>'));
+     $('body').scrollTop(9000);
+    }
+    else if (msg=="acr1") {
+        $('#messages').append($('<li><img style="margin-top:1px;"src="https://image.ibb.co/jrTsLb/acron1.jpg"width="300px""/>'));
+        $('body').scrollTop(9000);
+    }
+    else if (msg=="acr2") {
+        $('#messages').append($('<li><img style="margin-top:1px;"src="https://image.ibb.co/exUz0b/acron2.jpg" width="300px""/>'));
+        $('body').scrollTop(9000);
+    }
+    else if (msg=="acr3") {
+        $('#messages').append($('<li><img style="margin-top:1px;"src="https://image.ibb.co/cRR1Dw/acron3.jpg" width="300px""/>'));
+        $('body').scrollTop(9000);
+    }
+    else if (msg=="morty") {
+        $('#messages').append($('<li><img style="margin-top:1px;"src="http://68.media.tumblr.com/e66fc07ffe291d283f79859344cafd01/tumblr_o0ekjwNacC1s61ireo1_250.gif" width="300px""/>'));
+        $('body').scrollTop(9000);
+    }
+     else{
+        $('#messages').append($('<li>').text(msg));
+    //   $('#messages').append($('<img style="margin-top:1px;"src="https://www.ibm.com/thought-leadership/you/img/icon-01.png" width="60px"/>'));
       $('body').scrollTop(9000);
+  }
+    //   $('#body').scrollTop($('#body')[0].scrollHeight);
     });
   });
 </script>
@@ -36,7 +64,7 @@
       #messages li:nth-child(odd) { background: #2196f3;text-align: left; height: auto; color: white; border-radius: 10px 10px 10px 10px;}
     </style>
   </head>
-  <body>
+  <body id="body">
       <!-- <div class="container"> -->
       <nav style="background-color:#ebf5fb";>
         <div class="nav-wrapper" style="margin-right:3%; margin-left:3%">

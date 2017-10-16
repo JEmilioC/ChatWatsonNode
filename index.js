@@ -29,6 +29,7 @@ io.on('connection', function(socket){
 
 conversation.message({input: {text: msg}}, processResponse);
 
+
 function processResponse(err, response) {
   if (err) {
     console.error(err);
@@ -39,12 +40,37 @@ function processResponse(err, response) {
   }
 
   if (response.output.text.length != 0) {
-      console.log(response.output.text[0]);
-	  io.emit('chat message', "Watson("+hora +" hrs): "  +response.output.text[0]);
+
+      if (response.output.text[0]=="imagen") {
+          io.emit('chat message', response.output.text[0]);
+          console.log(response.output.text[0]);
+      }
+      else if (response.output.text[0]=="acr1") {
+          io.emit('chat message', response.output.text[0]);
+          console.log(response.output.text[0]);
+      }
+      else if (response.output.text[0]=="acr2") {
+          io.emit('chat message', response.output.text[0]);
+          console.log(response.output.text[0]);
+      }
+      else if (response.output.text[0]=="acr3") {
+          io.emit('chat message', response.output.text[0]);
+          console.log(response.output.text[0]);
+      }
+      else if (response.output.text[0]=="morty") {
+          io.emit('chat message', response.output.text[0]);
+          console.log(response.output.text[0]);
+      }
+      else {
+          console.log(response.output.text[0]);
+	         io.emit('chat message', "Watson("+hora +" hrs): "  +response.output.text[0]);
+      for (var i = 1; i < response.output.text.length; i++) {
+          io.emit('chat message',"");
+          io.emit('chat message', response.output.text[i])
+      }
   }
-
+  }
 }
-
 	});
 });
 http.listen(3000,function(){
