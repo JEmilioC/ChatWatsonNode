@@ -19,16 +19,18 @@ app.get('/', function(req,res){
 io.emit('some event', { for: 'everyone' });
 
 io.on('connection', function(socket){
+
   socket.on('chat message', function(msg){
      var hoy= new Date();
      var hr= hoy.getHours();
      var min= hoy.getMinutes();
      var hora= hr+":"+min;
+     if (msg!="") {
     io.emit('chat message', "You("+hora +" hrs): " + msg);
 
 
 conversation.message({input: {text: msg}}, processResponse);
-
+}
 
 function processResponse(err, response) {
   if (err) {
@@ -61,6 +63,11 @@ function processResponse(err, response) {
           io.emit('chat message', response.output.text[0]);
           console.log(response.output.text[0]);
       }
+      else if (response.output.text[0]=="imgdailylogin") {
+          io.emit('chat message', response.output.text[0]);
+          console.log(response.output.text[0]);
+      }
+     
       else {
           console.log(response.output.text[0]);
 	         io.emit('chat message', "Watson("+hora +" hrs): "  +response.output.text[0]);
