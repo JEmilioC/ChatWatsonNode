@@ -8,10 +8,8 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
-    $(function () {
-    var socket = io();
-    $('form').submit(function(){
-      socket.emit('chat message', $('#m').val());
+    $(function () {var socket = io();
+    $('form').submit(function(){socket.emit('chat message', $('#m').val());
       $('#m').val('');
       $('body').scrollTop(9000);
       return false;
@@ -34,7 +32,8 @@
         {"id":"hover","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/fb9da3c5-da49-4f7e-9e68-649dc28c9726/attachment/9cd9e4f8-889c-468e-9b3e-3f247c81c364/media/new%20%20Conventions.jpg" width="500px""/>'},
         {"id":"sberror1","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/98c154d1-5e12-4911-aa7e-f9a24ad55813/attachment/613f92c5-f633-401d-87a0-29b62e83420a/media/Error%20Message.jpg" width="200px""/>'},
         {"id":"sberror2","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/98c154d1-5e12-4911-aa7e-f9a24ad55813/attachment/de48d6ff-8f21-4a49-b27e-45576466a3ec/media/Error%20Message%202.jpg" width="200px""/>'},
-        {"id":"sberror3","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/98c154d1-5e12-4911-aa7e-f9a24ad55813/attachment/30d594ea-d731-458a-9c71-b8d84810c5ad/media/Error%20Message%203.jpg" width="200px""/>'}
+        {"id":"sberror3","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/98c154d1-5e12-4911-aa7e-f9a24ad55813/attachment/30d594ea-d731-458a-9c71-b8d84810c5ad/media/Error%20Message%203.jpg" width="200px""/>'},
+        {"id":"vacio","html":'<li style="background:white;">'}
     ]
     var a=0;
     var c;
@@ -43,6 +42,7 @@
     while(a<intents.length){c=intents[a].id;if(intent==c){ flag=true; c=intents[a].html; break;}a++;}
     //Si si hay entra en el IF que imprime la imagen con el html obtenido en el JSON
     if(flag){$('#messages').append($(c));$('body').scrollTop(9000);}
+    // else if(msg=="vacio"){$('#messages').append($('<li style="background:white;">').text(""));$('body').scrollTop(9000);}
     //Si no, entonces imprime el mensaje que mandó watson CoNverSaTioN  
     else{$('#messages').append($('<li>').text(msg));$('body').scrollTop(9000);}
     });
@@ -56,15 +56,14 @@
       form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; text-align: right; height: auto; font-size: 15px;}
-      #messages li:nth-child(odd) { background: #2196f3;text-align: left; height: auto; color: white; border-radius: 10px 10px 10px 10px;}
+      #messages li:nth-child(odd) { background: #2196f3;text-align: left; height: auto; color: white; border-radius: 10px 10px 10px 10px; }
     </style>
   </head>
   <body id="body">
-      <!-- <div class="container"> -->
       <nav style="background-color:#ebf5fb";>
         <div class="nav-wrapper" style="margin-right:3%; margin-left:3%">
         <img style="margin-top:1px;"src="https://www.ibm.com/thought-leadership/you/img/icon-01.png" width="60px"/>
-          <a href="https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/CROSS%20User%20Guide/page/Welcome" class="brand-logo" style="font-family:'Trebuchet MS', Helvetica, sans-serif; color:#1f70c1; text-align:center; font-size:40px;"> CROSS Bot</a>
+          <a  class="brand-logo tooltipped" data-position="botom" data-delay="10" data-tooltip="Wiki" href="https://w3-connections.ibm.com/wikis/home?lang=en#!/wiki/CROSS%20User%20Guide/page/Welcome" style="font-family:'Trebuchet MS', Helvetica, sans-serif; color:#1f70c1; text-align:center; font-size:40px;"> CROSS Bot</a>
           <ul class="right hide-on-med-and-down">
              <li><a href=""><img style="margin-top:5px;"src="https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg" width="130px"/></a></li>
           </ul>
