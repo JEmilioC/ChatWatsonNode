@@ -37,16 +37,20 @@ function processResponse(err, response) {
       }
       else {
           console.log(response.output.text[0]);
-	         io.emit('chat message', "Watson("+hora +" hrs): "  +response.output.text[0]);
+           io.emit('chat message', "Watson("+hora +" hrs): "  +response.output.text[0]);
+        if (response.output.text.length>1){
         for (var i = 1; i < response.output.text.length; i++) {
           io.emit('chat message',"vacio");
           io.emit('chat message', response.output.text[i])
           }
+        }
       }
     }
 }
 	});
 });
-http.listen(3000,function(){
+
+var port = process.env.PORT || 3000
+http.listen(port,function(){
 	console.log('listening on port 3000')
-});   
+});

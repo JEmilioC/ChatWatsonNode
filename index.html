@@ -22,7 +22,7 @@
         {"id":"acr1","html":'<li><img style="margin-top:1px;"src="https://image.ibb.co/jrTsLb/acron1.jpg"width="300px""/>'},
         {"id":"acr2","html":'<li><img style="margin-top:1px;"src="https://image.ibb.co/exUz0b/acron2.jpg" width="300px""/>'},
         {"id":"acr3","html":'<li><img style="margin-top:1px;"src="https://image.ibb.co/cRR1Dw/acron3.jpg" width="300px""/>'},
-        {"id":"morty","html":'<li><img style="margin-top:1px;"src="http://68.media.tumblr.com/e66fc07ffe291d283f79859344cafd01/tumblr_o0ekjwNacC1s61ireo1_250.gif" width="300px""/>'},
+        {"id":"gif","html":'<li><img style="margin-top:1px;"src="http://68.media.tumblr.com/e66fc07ffe291d283f79859344cafd01/tumblr_o0ekjwNacC1s61ireo1_250.gif" width="300px""/>'},
         {"id":"imgdailylogin","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/7ddb9615-f88d-443a-83e1-f394dc9211c6/attachment/3144a780-f7a0-425a-9058-7683b6ec4a5d/media/Error%20login%20Upper%20case.jpg" width="400px""/>'},
         {"id":"imgnav","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/0c6cb4da-7442-471a-9376-8e383f481143/attachment/16cd903a-0a8b-40ae-b1b1-a8d146ece0b1/media/maximun.jpg" width="200px""/>'},
         {"id":"imgshort","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/25d451e7-301f-4980-9b53-2c554ecb390c/attachment/b7749873-c812-4886-b6c7-f03803170cc7/media/Key%20Function.jpg" width="250px""/>'},
@@ -33,22 +33,23 @@
         {"id":"sberror1","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/98c154d1-5e12-4911-aa7e-f9a24ad55813/attachment/613f92c5-f633-401d-87a0-29b62e83420a/media/Error%20Message.jpg" width="200px""/>'},
         {"id":"sberror2","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/98c154d1-5e12-4911-aa7e-f9a24ad55813/attachment/de48d6ff-8f21-4a49-b27e-45576466a3ec/media/Error%20Message%202.jpg" width="200px""/>'},
         {"id":"sberror3","html":'<li><img style="margin-top:1px;"src="https://w3-connections.ibm.com/wikis/form/api/wiki/06f08e7c-fd3d-4b2f-8125-4d4bcdf187e2/page/98c154d1-5e12-4911-aa7e-f9a24ad55813/attachment/30d594ea-d731-458a-9c71-b8d84810c5ad/media/Error%20Message%203.jpg" width="200px""/>'},
-        {"id":"vacio","html":'<li style="background:white;">'}
+        {"id":"vacio","html":'<li style="background:white;">'},
+        {"id":"link","html":'<li style="background:white;"> <a src="fb.com">hello</a> '}
     ]
     var a=0;
     var c;
     var flag = false;
     //Del JSON buscar si la intención entra en alguna que ocupe imagenes
-    while(a<intents.length){c=intents[a].id;if(intent==c){ flag=true; c=intents[a].html; break;}a++;}
+    while(a<intents.length){c=intents[a].id;if(msg==intents[a].id){ flag=true;c=intents[a].html;break;}a++;}
     //Si si hay entra en el IF que imprime la imagen con el html obtenido en el JSON
     if(flag){$('#messages').append($(c));$('body').scrollTop(9000);}
-    // else if(msg=="vacio"){$('#messages').append($('<li style="background:white;">').text(""));$('body').scrollTop(9000);}
     //Si no, entonces imprime el mensaje que mandó watson CoNverSaTioN  
     else{$('#messages').append($('<li>').text(msg));$('body').scrollTop(9000);}
     });
   });
 </script>
     <style> 
+    /* 3-23 */
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 17px Helvetica, Verdana, bottom; }
       form { background: #FFF; padding: 3px; position: fixed; bottom: 0; width: 100%; }
@@ -73,7 +74,7 @@
     <ul id="messages" style=" margin-right:10%; margin-left:10%; margin-top:2%;margin-bottom:6%;"></ul>
 </div>
     <div>
-    <form action="" style="background:#ebf5fb; height:50px; bottom:2%;margin-right:15%;" >
+    <form action="" style="background:#ebf5fb; height:50px; bottom:2%;margin-right:15%;">
             <div class="input-field col s5">
                   <i class="material-icons prefix">chevron_right</i> <input placeholder="Type Something" id="m" />
             </div>
